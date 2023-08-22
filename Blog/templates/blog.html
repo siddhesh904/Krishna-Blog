@@ -1,0 +1,27 @@
+{% extends "master.html" %}
+
+{% block title %}
+Blog Info
+{% endblock %}
+
+{% block body %}
+
+{% for i in Info %}
+
+<div class="card" style="width: 18rem;">
+    <img src="media/{{i.images}}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title"><a href="/viewBlog/{{i.id}}">{{i.name}}</a></h5>
+      <p class="card-text">{{i.content|slice:100 }}</p>
+    </div>
+    <li>
+      <a href="/update/{{i.id}}" class = 'btn btn-outline-primary'>update</a>
+      <a href="/delete/{{i.id}}" class = 'btn btn-outline-danger'>delete</a>
+    </li>
+
+  </div>
+{% endfor %}
+
+
+
+{% endblock %}

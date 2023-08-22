@@ -1,0 +1,23 @@
+{% extends "master.html" %}
+
+{% block title %}
+Blog Content
+{% endblock %}
+
+{% block body %}
+
+{% for i in newData %}
+
+<div class="container d-flex justify-content-center align-item-center">
+  <h1 class = 'display-1 text-uppercase'>{{i.name}}</h1>
+  <img src="/media/{{i.images}}" alt="">
+  <p class = 'fs-5'>{{i.content}}</p>
+</div>
+<p></p>
+
+
+
+
+  {% endfor %}
+
+  {% endblock %}

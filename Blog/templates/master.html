@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}
+
+    {% endblock %}</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow p-3 mb-2 my-2 mx-2 rounded bg-body-dark  ">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">Krishna Blog</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="d-flex justify-content-end mx-3 " id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/">Home</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/about">About</a>
+          </li>
+
+          {% if not request.user.is_authenticated %}
+
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/sign_out">Sign Out</a>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/blog">blog</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/addContent">add Blog</a>
+          </li>
+
+          {% endif %}
+        </ul>
+
+        <form class="d-flex mx-5" role="search">
+          {% if request.user.is_authenticated %}
+          
+         
+          <div class="btn-group ">
+            <button class="btn btn-dark dropdown-toggle rounded-circle" style="width: 63px; height: 50px;" type="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              <img src="https://static.thenounproject.com/png/4255114-200.png" style='height: 25px;'
+                class="bg-light rounded-circle" alt="">
+            </button>
+            <ul class="dropdown-menu">
+              <li><a href="/logout" class='btn btn-primary'>Logout</a></li>
+            </ul>
+          </div>
+         
+
+          {% else %}
+          <a href="/sign_in" class='btn btn-primary'>SignIn</a>
+          {% endif %}
+
+        </form>
+      </div>
+    </div>
+  </nav>
+
+  {% block body %}
+
+  {% endblock %}
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

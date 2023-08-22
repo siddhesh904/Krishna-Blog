@@ -1,0 +1,29 @@
+{% extends "master.html" %}
+
+{% block title %}
+Update Blog
+{% endblock %}
+
+{% block body %}
+<form method = 'post' enctype="multipart/form-data">
+  {% csrf_token %}
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label"><h2>Blog Name</h2></label>
+    <input type="text" class="form-control"name = 'name' value="{{blog.name}}">
+  </div>
+
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label"><h2>Blog Content</h2></label>
+    <textarea name="content"  class="form-control" id="" cols="30" rows="10">{{blog.content}}</textarea>
+  </div>
+
+
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label"><h2>Blog Images</h2></label>
+    <input type="file" class="form-control"name = 'images' value = {{blog.images}}>
+  </div>
+
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock %}
